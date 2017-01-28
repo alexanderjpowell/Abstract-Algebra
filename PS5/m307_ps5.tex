@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[linkcolor=Blue, urlcolor=Blue,colorlinks=true]{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}							% Fancy colors
+\usepackage{fullpage}
+\usepackage{enumitem}
+
+% Macros
+\newcommand{\ii}{\textup{i}}									% \textup{i} := \sqrt{-1}
+\newcommand{\tr}{\mathsf{T}}									% transpose T
+\newcommand{\bb}[1]{\mathbb{#1}}								% Blackboard boldface for R, C, N, Q
+\newcommand{\inv}[1]{{#1}^{-1}}								% Inverse
+
+\begin{document}
+
+\textbf{Math 307 -- PS5 \hfill Name: Alexander Powell}
+
+Printed-copy due: 5pm on 11/12/2014 
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\arabic*})]
+% 1
+\item Let $M_2(\bb{R})$ be the group of all real $2 \times 2$ matrices under addition. Prove that $M_2(\bb{R}) \cong \bb{R}^4$, where $\bb{R}^4$ is considered as a group under vector addition. 
+
+\begin{proof}
+To prove that $M_2(\bb{R}) \cong \bb{R}^4$ we need to show there exists an isomorphism.  This is clear when you define the relation $\omega: M_2(\bb{R}) \cong \bb{R}^4$ as $\omega ( \begin{bmatrix} a & b \\ c & d \end{bmatrix} ) = \begin{bmatrix} a \\ b \\ c \\ d \end{bmatrix}$.  
+\end{proof}
+
+
+% 2
+\item Let $\bb{P}_n$ be the set of all polynomial functions of degree at most $n$, i.e., 
+\[ \bb{P}_n = \left\{ p(t) = a_0 + a_1 t + \dots + a_n t^n = \sum_{k=0}^n a_k t^k : a_k \in \bb{R},~k=0,\dots,n \right\}. \] 
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\alph*})]
+\item Prove that $\bb{P}_n$ is a group under \textit{function addition}, i.e., for $p$, $q \in \bb{P}_n$, $(p+q)(t) := p(t) + q(t)$.
+
+
+\begin{proof}
+To prove $\bb{P}_n$ is a group we need to establish closure, associativity, identity, and inverse.  
+
+To establish closure, take $2$ elements $p,q \in \bb{P}_n$.  We have that $(p+q)t = p(t) + q(t) = \sum_{k=0}^n a_k t^k + \sum_{k=0}^n a_k t^k = \sum_{k=0}^n (a_k + b_k) t^k$.  
+
+For associativity, it is clear that $(pq)t = (pt)q = (qt)p$.  
+
+To establish identity, it can be shown that when $m = 0 + 0t + ... + 0t^{n} = 0$.  Therefore, we can say that $m \in \bb{P}_n$ and $m + p = p$.  
+
+Finally, to establish an inverse it can be shown that $$-p(t) = \sum_{k=0}^n (-a_k) t^k \in \bb{P}_n$$
+\end{proof}
+
+
+
+\item Prove that $\bb{P}_n \cong \bb{R}^{n+1}$.
+\end{enumerate}
+
+\begin{proof}
+Similarly from Problem $1$, we need to show an isomorphism between the relation $\phi: \bb{P}_n \cong \bb{R}^{n+1}$.  This relationship can be defined as: $\phi: (p(t) = \sum_{k=0}^n a_k t^k) = \begin{bmatrix} a_0 \\ a_1 \\ \cdot \\ \cdot \\ \cdot \\ a_n \end{bmatrix}$
+\end{proof}
+
+
+% 3
+\item If $G = H_1 \times \cdots \times H_n$, show that $H_i \cap H_j = \{ e \}$ for all $1 \leq i,j \leq n$, $i \neq j$.
+
+\begin{proof}
+Assume, to the contrary, there exists some $m \in H_i \cap H_j$ and that $m \neq e$.  The we have that $(H_1 ... H_i ... H_{j-1}) \cap H_j = \{e \}$.  However, it is the case that $m = e ... m ... e \in H_1 ... H_i ... H_{j-1}$.  Also, $m \in H_j$ so $x \in (H_1 ... H_i ... H_{j-1}) \cap H_j$.  However, this is a contradiction, so the original statement holds true: $H_i \cap H_j = \{ e \}$.  
+\end{proof}
+
+
+
+% 4
+\item If $\varphi:G \longrightarrow \overline{G}$ is an isomorphism and $H \lhd G$, prove that $\overline{H} := \varphi(H) \lhd \overline{G}$.
+
+\begin{proof}
+Since $H$ is non-empty and $\varphi(e) = \bar{e}$, we know that $\bar{H}$ is non-empty as well.  Lets start by taking elements $\bar{h}$ and $\bar{g}$ in $\bar{H}$ and $\bar{G}$, respectively.  Then there exists elements $h$ and $g$ in $H$ and $G$, respectively.  Also, there exists $\bar{h} \in \bar{H}$ such that $\bar{h} = ghg^{-1}$ and since $\varphi$ is an isomorphism it can be shown that $\varphi(\bar{h}) = \varphi(ghg^{-1}) = \varphi(g)\varphi(h)\varphi(g^{-1}) = \bar{g}\bar{h}\bar{g}^{-1}$ and $\bar{g}\bar{h}\bar{g}^{-1} \in \bar{H}$.  
+\end{proof}
+
+
+\end{enumerate}
+
+\end{document}

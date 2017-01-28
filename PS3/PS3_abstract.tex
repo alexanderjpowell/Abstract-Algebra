@@ -1,0 +1,95 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{enumitem}
+
+\newcommand{\ii}{\textup{i}}									% \textup{i} := \sqrt{-1}
+\newcommand{\tr}{\mathsf{T}}									% transpose T
+
+\begin{document}
+
+\textbf{Math 307 -- PS3 \hfill Name: Alexander Powell}
+
+Due: 5pm on 10/01/2014
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\arabic*})]
+%1
+\item  Prove that 
+\[ H:= \left\{ \begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix} : n \in \mathbb{Z} \right\} \] 
+is a cyclic subgroup of $GL_2 (\mathbb{R})$.
+
+
+\begin{proof}
+
+Let $n \in \mathbb{N}$.  Then we prove by induction that when $n = 1$, then $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^{n}=\begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix}$.  Next let $n=k+1$, then we can shoe that $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^{k+1} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^{k} \cdot \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & k+1 \\ 0 & 1 \end{bmatrix}$.  Thus, via the principle of mathematical induction, it is proven that $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^{n}=\begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix}$ if $n > 0$.  
+
+Next, if $n < 0$, we can write that $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^{-n} = (\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^{n})^{-1} = (\begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix})^{-1} = \begin{bmatrix} 1 & -n \\ 0 & 1 \end{bmatrix}$.  
+
+Therefore, we have proven that \[ H:= \left\{ \begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix} : n \in \mathbb{Z} \right\} \] 
+is a cyclic subgroup of $GL_2 (\mathbb{R})$.
+\end{proof}
+
+
+%2
+\item Let $G$ be a group and $H \leq G$. For any fixed $x \in G$, let $xHx^{-1} := \{ xhx^{-1} : h \in H \}$. Prove that:
+\begin{enumerate}[leftmargin=*, label=(\textbf{\alph*})]
+\item  $xHx^{-1} \leq G$.
+
+
+\begin{proof}
+
+We must begin by proving that $xHx^{-1}$ is nonempty.  This is easy to show because $e \in H$ and $xex^{-1}=e \in xHx^{-1}$.  Next, we have that $xax^{-1} \cdot (xbx^{-1})^{-1}=xax^{-1} \cdot (xb^{-1}x^{-1}) = xab^{-1}x^{-1}$.  
+\end{proof}
+
+
+\item  if $H$ is cyclic, then $xHx^{-1}$ is cyclic. 
+
+\begin{proof}
+To prove $xHx^{-1}$ is cyclic we must show that $xHx^{-1} = \langle xhx^{-1} \rangle$.  We prove by induction that $(xhx^{-1})^{n}=xh^{n}x^{-1}$.  If $n=1$, then $(xhx^{-1})=xhx^{-1}$, so the base step is true.  Then, let $n=k+1$, so $(xhx^{-1})^{k+1}=xh^{k+1}x^{-1}$ can be rewritten as $(xhx^{-1})^{k}(xhx^{-1}) = xh^{k}kx^{-1}$.  Also, if $n<0$ the same inductive proof can be used but the $n's$ in the exponents will be negated.  Therefore, it is proven that $xHx^{-1}$ is cyclic if $H$ is cyclic.  
+\end{proof}
+
+\item  if $H$ is Abelian, then $xHx^{-1}$ is Abelian.
+
+\begin{proof}
+Let $A,B \in xHx^{-1}$, then $A = xax^{-1}$ and $B = xbx^{-1}$ for some $a$ and $b$ in $H$.  Since $AB = (xax^{-1})(xbx^{-1}) = xax^{-1}xbx^{-1} = xabx^{-1} = xbx^{-1}xax^{-1} = BA$.  Thus, we have that $xHx^{-1}$ is Abelian.  
+\end{proof}
+
+\end{enumerate} 
+
+%3
+\item Given a group $G$, prove that 
+\[ Z(G) = \bigcap_{a \in G} C(a). \]
+
+\begin{proof}
+Let some element $b \in Z(G)$.  Then we have that $ba = ab, \forall a \in G$.  Also, $b \in C(a), \forall a \in G$, and finally, $b \in \bigcap_{a \in G} C(a)$.  Thus, $Z(G) = \bigcap_{a \in G} C(a)$.  
+\end{proof}
+
+%4
+\item If $a$ is an element of $G$, prove that $|g a g^{-1}| = |a|$ for any $g \in G$.
+
+\begin{proof}
+There are two cases to this proof: the cardinality of $a$, or $|a|$ is finite or infinite.  
+
+Case 1: $|a| < \infty$
+
+Then $(gag^{-1})^{n}=ga^{n}g^{-1}=geg^{-1}=e$.  Next, we use proof by contradiction: we make the assumption that $|g a g^{-1}| = m < n$.  Then $(g a g^{-1})^{m}=ga^{m}g^{-1}=e$.  However, this leads to $a^{m}=g^{-1}eg = e$, which is a contradiction.  Therefore, $|a|=|gag^{-1}|$.  
+
+Case 2: $|a| = \infty$
+
+Then make the assumtion that $|gag^{-1}|= m < \infty$.  If this is the case, then $(gag^{-1})^{m}=ga^{m}g^{-1}=e$.  However, this implies that $a^{m}=g^{-1}eg=e$, which is a contradiction.  Therefore, $|gag^{-1}|=|a|$.  
+\end{proof}
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+

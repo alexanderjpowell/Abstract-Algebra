@@ -1,0 +1,133 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[linkcolor=Blue, urlcolor=Blue,colorlinks=true]{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}							% Fancy colors
+\usepackage{fullpage}
+\usepackage{enumitem}
+
+% Macros
+\newcommand{\ii}{\textup{i}}									% \textup{i} := \sqrt{-1}
+\newcommand{\tr}{\mathsf{T}}									% transpose T
+\newcommand{\bb}[1]{\mathbb{#1}}								% Blackboard boldface for R, C, N, Q
+\newcommand{\inv}[1]{{#1}^{-1}}								% Inverse
+
+\begin{document}
+
+\textbf{Math 307 -- PS6 \hfill Name: Alexander Powell}
+
+Printed-copy due: 5pm on 11/24/2014 
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\arabic*})]
+% 1
+\item Let $\phi$ be a homomorphism from $G$ to $\bar{G}$ and $\sigma$ be a homomorphism from $\bar{G}$ to $\tilde{G}$. 
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\alph*})]
+\item Prove that $\psi:=\sigma \circ \phi$ is a homomorphism from $G$ to $\tilde{G}$.
+
+\begin{proof}
+Take $p$ and $q$ $\in G$.  Then we have that $\psi(pq) = \sigma(\phi(pq)) = \sigma(\phi(p)\phi(q)) = \sigma(\phi(p)) \sigma(\phi(q)) = \psi(p) \psi(q)$.  Therefore, $\psi:=\sigma \circ \phi$ is a homomorphism from $G$ to $\tilde{G}$.  
+\end{proof}
+
+\item Prove that $\ker(\phi) \leq \ker(\psi)$.
+
+\begin{proof}
+To prove that $\ker(\phi) \leq \ker(\psi)$ we need to establish that $\ker(\phi) \subseteq \ker(\psi)$.  By taking some $p \in \ker(\phi)$ then we have that $\psi(p) = \sigma(\phi(p)) = \sigma(\bar{e}) = \tilde{e}$.  Since $p \in \ker(\psi)$ we can say that $\ker(\phi) \subseteq \ker(\psi)$ and thus $\ker(\phi) \leq \ker(\psi)$ is established.  
+\end{proof}
+
+\end{enumerate} 
+
+% 2 
+\item Show that a homomorphism defined on a cyclic group is completely determined by its action on a generator of the group.
+
+\begin{proof}
+Take some homomorphism $h:G \rightarrow \bar{G}$.  If $\langle a \rangle = G$, then $h(a^{k}) = h(a)^{k}$, and since every element of $G$ is in the form $a^{k}$ their images are all determined by the image of $a$ and the product in the image group.  
+\end{proof}
+
+% 3
+\item Let $\phi: \bb{R} \rightarrow SL_2 (\bb{R})$ be defined by
+\begin{align*}
+\phi(x) = 
+\left[
+\begin{array}{rr}
+\cos x & \sin x \\
+-\sin x & \cos x
+\end{array}
+\right].
+\end{align*}
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\alph*})]
+\item Prove that $\phi$ is a homomorphism.
+
+\begin{proof}
+For any $x, y \in R$ then we can define 
+$$\phi(x+y) = 
+\begin{bmatrix}
+\cos (x+y) & \sin (x+y) \\
+-\sin (x+y) & \cos (x+y)
+\end{bmatrix}$$
+Then using basic trig properties we can rewrite the matrix as 
+$$\begin{bmatrix}
+\cos x \cos y - \sin x \sin y & \cos x \sin y + \sin x \cos y 	\\
+-\sin x\cos y - \cos x\sin y & - \sin x\sin y + \cos x\cos y 
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos x & \sin x 	\\
+-\sin x & \cos x
+\end{bmatrix}
+\times
+\begin{bmatrix}
+\cos y & \sin y 	\\
+-\sin y & \cos y
+\end{bmatrix}
+$$
+So we have that $\phi(x + y) = \phi(x) \phi(y)$, therefore $\phi$ is a homomorphism.  
+\end{proof}
+
+\item Prove that $\ker(\phi) = \langle 2 \pi \rangle$.
+
+\begin{proof}
+Any element $p \in \ker(\phi)$ if and only if 
+$$
+\begin{bmatrix}
+\cos p & \sin p 	\\
+-\sin p & \cos p
+\end{bmatrix}
+$$
+is equal to the $2 \times 2$ identity matrix.  Since $\cos p = 1$ and $\sin p = 0$ only holds true if $p = 2 \pi k$, $k \in \bb{Z}$.  Therefore, it is established that $\ker(\phi) = \langle 2 \pi \rangle$.  
+\end{proof}
+
+\end{enumerate}
+
+% 4
+\item Let $\phi: \bb{C}^\times \longrightarrow \bb{C}^\times$ be defined by $\phi(z) = z^n$.
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\alph*})]
+\item Prove that $\phi$ is a homomorphism.
+
+\begin{proof}
+Take some $z$ and $y \in \bb{C}^\times$.  Then we can write $z = a(\cos \theta + \ii \sin \theta)$ and $y = b(\cos \psi + \ii \sin \psi)$ and $a,b > 0$ with $\theta, \psi \in [0,2\pi)$.  Via DeMoivre's theorem we have that 
+$$\phi(zy)=(zy)^{n}=[a(\cos\theta + \ii \sin\theta)b(\cos\psi + \ii \sin\psi)]^n=a^n b^n [\cos(\theta + \psi) + \ii \sin(\theta + \psi)]^n$$
+$$=a^n b^n [\cos(n\theta + n\psi) + \ii \sin(n\theta + n\psi)]$$
+$$=a^n[\cos(n\theta) + \ii \sin(n\theta)] b^n [\cos(n\psi) + \ii \sin(n\psi)] = z^n y^n = \phi(z) \phi(y)$$
+Therefore, it is established that $\phi$ is a homomorphism.  
+\end{proof}
+
+
+\item Prove that $\ker(\phi) = \Omega_n := \{ \exp(2 k \pi i / n) : k =0,1, \dots, n- 1\}$. 
+
+\begin{proof}
+Again, take $z = a(\cos \theta + \ii \sin \theta)$ and $y = b(\cos \psi + \ii \sin \psi)$ where both $x,y \in \bb{C}$.  Then the only case when $z=y$ is when $a=b$ and $\theta=2\pi k, k \in \bb{Z}$.  So, $z = a(\cos\theta + \ii \sin\theta) \in \ker(\phi)$ iff $z^n = 1$ so we can write $r^n (\cos(n\theta) + \ii \sin(n\theta)) = (\cos(2\pi k) + \ii \sin(2\pi k)), k \in \bb{Z}$.  This is only the case when $a^{n} = 1$ and $n\theta = 2\pi k$.  So, $z \in \ker(\phi)$ only when $z = \cos(2 \pi k/ n) + \ii \sin(2\pi k/n) = (\cos(2 \pi/n) + \ii \sin(2 \pi/n))^k, k \in \bb{Z}$, however $z = (\cos(2 \pi/n) + \ii \sin(2 \pi/n))^{k \bmod n}$.  So we have that $\ker(\phi) = \Omega_n := \{ \exp(2 k \pi i / n) : k =0,1, \dots, n- 1\}$.  
+\end{proof}
+
+\item Prove that $\bb{C}^\times/\Omega_n \cong \bb{C}^\times$.
+
+\begin{proof}
+If $z = a(\cos\theta + \ii\sin\theta)$ and $y = a^{1/n}(\cos(n\theta) + \ii\sin(n\theta))$ and both $z,y \in \bb{C}^\times$, then $\phi(w) = z$.  Therefore $\phi(\bb{C}^\times) = \bb{C}^\times$ and $\bb{C}^\times/\Omega_n \cong \bb{C}^\times$.  
+\end{proof}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

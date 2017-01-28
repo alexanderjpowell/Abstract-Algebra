@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[linkcolor=Blue, urlcolor=Blue,colorlinks=true]{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}							% Fancy colors
+\usepackage{fullpage}
+\usepackage{enumitem}
+
+% Macros
+\newcommand{\ii}{\textup{i}}									% \textup{i} := \sqrt{-1}
+\newcommand{\tr}{\mathsf{T}}									% transpose T
+\newcommand{\bb}[1]{\mathbb{#1}}								% Blackboard boldface for R, C, N, Q
+\newcommand{\inv}[1]{{#1}^{-1}}								% Inverse
+
+\begin{document}
+
+\textbf{Math 307 -- PS4 \hfill Name: Alexander Powell}
+
+Due: 5pm on 10/27/2014
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\arabic*})]
+% 1
+\item Suppose that $H$ and $K$ are subgroups of $G$ and there are elements $a$ and $b$ in $G$ such that $aH \subseteq bK$. Prove that $H \subseteq K$. 
+
+\begin{proof}
+First take $h \in H$.  Then, $\exists k \in K$ such that $ah=bk$.  Therefore, we can write that $h \in a^{-1} bk$.  We know that $a \in aH$.  let $i \in K$, then $a=bi$.  Therefore, we have that $a^{-1}=i^{-1}b^{-1}$.  Substitution into our equation from earlier, we can write that $h=(i^{-1}b^{-1})bk=i^{-1}k \in K$.  Therefore, $H \subseteq K$.  
+\end{proof}
+
+% 2
+\item Let $H$ and $K$ be subgroups of a finite group $G$ with $H \subseteq K \subseteq  G$. Prove that 
+\[|G:H| = |G:K||K:H|. \]
+
+\begin{proof}
+We can rewrite $|G:H|$ as $\frac{|G|}{|H|}$.  This is equivalent to $\frac{|G|}{|K|} \frac{|K|}{|H|}$.  Changing the fraction back to their original representation gives us $|G:K||K:H|$.  Therefore, $|G:H| = |G:K||K:H|$.  
+\end{proof}
+
+% 3
+\item Let $\mathbf{G} = GL_n (\bb{R})$ and $\mathbf{H} = \{ H \in \mathbf{G}: \det(H) = \pm1 \}$.  
+
+\begin{enumerate}[leftmargin=*, label=(\textbf{\alph*})]
+\item Prove that $\mathbf{H} \leq \mathbf{G}$.
+
+
+\begin{proof}
+First we must show that $H$ is nonempty.  This is clear from the fact that the $\det(I_n) = 1$ and $I_n \in H$.  Next, let A be some $n \times n$ invertible matrix $\in H$.  Then $\det(A^{-1})=(\det(A))^{-1}$.  Therefore, $A^{-1} \in H$.  Hence, $\mathbf{H} \leq \mathbf{G}$.  
+\end{proof}
+
+
+\item Given $A$, $B \in \mathbf{G}$, prove that $A\mathbf{H}=B\mathbf{H}$ if and only if $\det(A) = \pm \det(B)$.
+
+\begin{proof}
+First, we should state that $A^{-1}B \in H iff \det(A)=\pm \det(B)$. This can be rewritten $\det(A^{-1})\det(B)=\pm 1$ or $(\det(A))^{-1}det(B)=\pm 1$ or $\det(B)=\pm \det(A)$.  Therefore, $A\mathbf{H}=B\mathbf{H}$ if and only if $\det(A) = \pm \det(B)$.  
+\end{proof}
+
+
+\end{enumerate}
+
+%
+
+\end{enumerate}
+
+\end{document}
